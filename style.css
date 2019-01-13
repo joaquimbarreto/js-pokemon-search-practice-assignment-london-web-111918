@@ -56,3 +56,8 @@ input:focus {
 .flip-image {
   color: #2d72fc;
 }
+
+.toggle-sprite {
+  display: block;
+  margin: 0 auto;
+}
