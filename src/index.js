@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', fetchPokemons)
 
 const pokemons = 'http://localhost:3000/pokemon'
 const pokemonContainerDiv = document.querySelector('#pokemon-container');
+const pokeFilter = document.getElementById('pokemon-search-input')
 
-function fetchPokemons() { 
+function fetchPokemons() {
   fetch(pokemons)
   .then(response => response.json())
   .then(data => {
@@ -36,4 +36,15 @@ pokemonContainerDiv.addEventListener('click', event => {
       event.target.src = targetPoke.sprites.front
     }
   }
-})
+});
+
+function filterPokemon(res){
+  return res.filter((pokemon) => pokemon.name.includes(pokeFilter.value.toLowerCase()));
+}
+
+
+
+pokeFilter.addEventListener("input", fetchPokemons)
+
+
+document.addEventListener('DOMContentLoaded', fetchPokemons)
